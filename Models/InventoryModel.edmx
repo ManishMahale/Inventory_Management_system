@@ -5,6 +5,47 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Inventory_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminMobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminDOB" Type="date" Nullable="false" />
+          <Property Name="AdminGender" Type="bit" Nullable="false" />
+          <Property Name="QualificationId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="AdminPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblManager">
+          <Key>
+            <PropertyRef Name="ManId" />
+          </Key>
+          <Property Name="ManId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManMobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManDOB" Type="date" Nullable="false" />
+          <Property Name="ManGender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManSalary" Type="int" />
+          <Property Name="QualificationId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="ManJoiningDate" Type="date" />
+          <Property Name="ManPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManDeleted" Type="bit" />
+        </EntityType>
         <EntityType Name="tblPurchase">
           <Key>
             <PropertyRef Name="id" />
@@ -13,6 +54,20 @@
           <Property Name="Purchase_pro" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Purchase_qnty" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Purchase_date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQualification">
+          <Key>
+            <PropertyRef Name="QualificationId" />
+          </Key>
+          <Property Name="QualificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Degree" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="tblSale">
           <Key>
@@ -23,9 +78,158 @@
           <Property Name="Sale_qnty" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Sale_date" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblStaff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StaffMobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StaffEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StaffDOB" Type="date" Nullable="false" />
+          <Property Name="StaffGender" Type="bit" Nullable="false" />
+          <Property Name="StaffSalary" Type="int" />
+          <Property Name="QualificationId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="StaffJoiningDate" Type="date" />
+          <Property Name="StaffPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StaffDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK__tblAdmin__Qualif__662B2B3B">
+          <End Role="tblQualification" Type="Self.tblQualification" Multiplicity="1" />
+          <End Role="tblAdmin" Type="Self.tblAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="tblAdmin">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAdmin__RoleId__671F4F74">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblAdmin" Type="Self.tblAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblAdmin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblManage__Quali__5F7E2DAC">
+          <End Role="tblQualification" Type="Self.tblQualification" Multiplicity="1" />
+          <End Role="tblManager" Type="Self.tblManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="tblManager">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblManage__RoleI__607251E5">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblManager" Type="Self.tblManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblManager">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStaff__Qualif__6BE40491">
+          <End Role="tblQualification" Type="Self.tblQualification" Multiplicity="1" />
+          <End Role="tblStaff" Type="Self.tblStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="tblStaff">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStaff__RoleId__6CD828CA">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblStaff" Type="Self.tblStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblStaff">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLogin_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblLogin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spManRegiCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ManName" Type="varchar" Mode="In" />
+          <Parameter Name="ManMobile" Type="varchar" Mode="In" />
+          <Parameter Name="ManEmail" Type="varchar" Mode="In" />
+          <Parameter Name="ManDOB" Type="date" Mode="In" />
+          <Parameter Name="ManGender" Type="varchar" Mode="In" />
+          <Parameter Name="ManSalary" Type="int" Mode="In" />
+          <Parameter Name="QualificationId" Type="int" Mode="In" />
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="ManJoiningDate" Type="date" Mode="In" />
+          <Parameter Name="ManPassword" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="Inventory_managementModelStoreContainer">
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblManager" EntityType="Self.tblManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPurchase" EntityType="Self.tblPurchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQualification" EntityType="Self.tblQualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSale" EntityType="Self.tblSale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStaff" EntityType="Self.tblStaff" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblAdmin__Qualif__662B2B3B" Association="Self.FK__tblAdmin__Qualif__662B2B3B">
+            <End Role="tblQualification" EntitySet="tblQualification" />
+            <End Role="tblAdmin" EntitySet="tblAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAdmin__RoleId__671F4F74" Association="Self.FK__tblAdmin__RoleId__671F4F74">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblAdmin" EntitySet="tblAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblManage__Quali__5F7E2DAC" Association="Self.FK__tblManage__Quali__5F7E2DAC">
+            <End Role="tblQualification" EntitySet="tblQualification" />
+            <End Role="tblManager" EntitySet="tblManager" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblManage__RoleI__607251E5" Association="Self.FK__tblManage__RoleI__607251E5">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblManager" EntitySet="tblManager" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStaff__Qualif__6BE40491" Association="Self.FK__tblStaff__Qualif__6BE40491">
+            <End Role="tblQualification" EntitySet="tblQualification" />
+            <End Role="tblStaff" EntitySet="tblStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStaff__RoleId__6CD828CA" Association="Self.FK__tblStaff__RoleId__6CD828CA">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblStaff" EntitySet="tblStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLogin_tblRole" Association="Self.FK_tblLogin_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblLogin" EntitySet="tblLogin" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -34,7 +238,53 @@
         <EntityContainer Name="Inventory_managementEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblSales" EntityType="Inventory_managementModel.tblSale" />
           <EntitySet Name="tblPurchases" EntityType="Inventory_managementModel.tblPurchase" />
-        </EntityContainer>
+          <EntitySet Name="tblLogins" EntityType="Inventory_managementModel.tblLogin" />
+          <EntitySet Name="tblRoles" EntityType="Inventory_managementModel.tblRole" />
+          <AssociationSet Name="FK_tblLogin_tblRole" Association="Inventory_managementModel.FK_tblLogin_tblRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblLogin" EntitySet="tblLogins" />
+          </AssociationSet>
+          <EntitySet Name="tblQualifications" EntityType="Inventory_managementModel.tblQualification" />
+          <EntitySet Name="tblAdmins" EntityType="Inventory_managementModel.tblAdmin" />
+          <EntitySet Name="tblManagers" EntityType="Inventory_managementModel.tblManager" />
+          <EntitySet Name="tblStaffs" EntityType="Inventory_managementModel.tblStaff" />
+          <AssociationSet Name="FK__tblAdmin__Qualif__662B2B3B" Association="Inventory_managementModel.FK__tblAdmin__Qualif__662B2B3B">
+            <End Role="tblQualification" EntitySet="tblQualifications" />
+            <End Role="tblAdmin" EntitySet="tblAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAdmin__RoleId__671F4F74" Association="Inventory_managementModel.FK__tblAdmin__RoleId__671F4F74">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblAdmin" EntitySet="tblAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblManage__Quali__5F7E2DAC" Association="Inventory_managementModel.FK__tblManage__Quali__5F7E2DAC">
+            <End Role="tblQualification" EntitySet="tblQualifications" />
+            <End Role="tblManager" EntitySet="tblManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblManage__RoleI__607251E5" Association="Inventory_managementModel.FK__tblManage__RoleI__607251E5">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblManager" EntitySet="tblManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStaff__Qualif__6BE40491" Association="Inventory_managementModel.FK__tblStaff__Qualif__6BE40491">
+            <End Role="tblQualification" EntitySet="tblQualifications" />
+            <End Role="tblStaff" EntitySet="tblStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStaff__RoleId__6CD828CA" Association="Inventory_managementModel.FK__tblStaff__RoleId__6CD828CA">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblStaff" EntitySet="tblStaffs" />
+          </AssociationSet>
+          <FunctionImport Name="spManRegiCreate">
+            <Parameter Name="ManName" Mode="In" Type="String" />
+            <Parameter Name="ManMobile" Mode="In" Type="String" />
+            <Parameter Name="ManEmail" Mode="In" Type="String" />
+            <Parameter Name="ManDOB" Mode="In" Type="DateTime" />
+            <Parameter Name="ManGender" Mode="In" Type="String" />
+            <Parameter Name="ManSalary" Mode="In" Type="Int32" />
+            <Parameter Name="QualificationId" Mode="In" Type="Int32" />
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="ManJoiningDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ManPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          </EntityContainer>
         <EntityType Name="tblSale">
           <Key>
             <PropertyRef Name="id" />
@@ -53,7 +303,179 @@
           <Property Name="Purchase_qnty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Purchase_date" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
-      </Schema>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblRole" Relationship="Inventory_managementModel.FK_tblLogin_tblRole" FromRole="tblLogin" ToRole="tblRole" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblLogins" Relationship="Inventory_managementModel.FK_tblLogin_tblRole" FromRole="tblRole" ToRole="tblLogin" />
+          <NavigationProperty Name="tblAdmins" Relationship="Inventory_managementModel.FK__tblAdmin__RoleId__671F4F74" FromRole="tblRole" ToRole="tblAdmin" />
+          <NavigationProperty Name="tblManagers" Relationship="Inventory_managementModel.FK__tblManage__RoleI__607251E5" FromRole="tblRole" ToRole="tblManager" />
+          <NavigationProperty Name="tblStaffs" Relationship="Inventory_managementModel.FK__tblStaff__RoleId__6CD828CA" FromRole="tblRole" ToRole="tblStaff" />
+        </EntityType>
+        <Association Name="FK_tblLogin_tblRole">
+          <End Type="Inventory_managementModel.tblRole" Role="tblRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Inventory_managementModel.tblLogin" Role="tblLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblLogin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblQualification">
+          <Key>
+            <PropertyRef Name="QualificationId" />
+          </Key>
+          <Property Name="QualificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Degree" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAdmins" Relationship="Inventory_managementModel.FK__tblAdmin__Qualif__662B2B3B" FromRole="tblQualification" ToRole="tblAdmin" />
+          <NavigationProperty Name="tblManagers" Relationship="Inventory_managementModel.FK__tblManage__Quali__5F7E2DAC" FromRole="tblQualification" ToRole="tblManager" />
+          <NavigationProperty Name="tblStaffs" Relationship="Inventory_managementModel.FK__tblStaff__Qualif__6BE40491" FromRole="tblQualification" ToRole="tblStaff" />
+        </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminMobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminDOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AdminGender" Type="Boolean" Nullable="false" />
+          <Property Name="QualificationId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="AdminPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminDeleted" Type="Boolean" />
+          <NavigationProperty Name="tblQualification" Relationship="Inventory_managementModel.FK__tblAdmin__Qualif__662B2B3B" FromRole="tblAdmin" ToRole="tblQualification" />
+          <NavigationProperty Name="tblRole" Relationship="Inventory_managementModel.FK__tblAdmin__RoleId__671F4F74" FromRole="tblAdmin" ToRole="tblRole" />
+        </EntityType>
+        <EntityType Name="tblManager">
+          <Key>
+            <PropertyRef Name="ManId" />
+          </Key>
+          <Property Name="ManId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManMobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManDOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ManGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManSalary" Type="Int32" />
+          <Property Name="QualificationId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="ManJoiningDate" Type="DateTime" Precision="0" />
+          <Property Name="ManPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManDeleted" Type="Boolean" />
+          <NavigationProperty Name="tblQualification" Relationship="Inventory_managementModel.FK__tblManage__Quali__5F7E2DAC" FromRole="tblManager" ToRole="tblQualification" />
+          <NavigationProperty Name="tblRole" Relationship="Inventory_managementModel.FK__tblManage__RoleI__607251E5" FromRole="tblManager" ToRole="tblRole" />
+        </EntityType>
+        <EntityType Name="tblStaff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StaffMobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StaffEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StaffDOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StaffGender" Type="Boolean" Nullable="false" />
+          <Property Name="StaffSalary" Type="Int32" />
+          <Property Name="QualificationId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="StaffJoiningDate" Type="DateTime" Precision="0" />
+          <Property Name="StaffPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StaffDeleted" Type="Boolean" />
+          <NavigationProperty Name="tblQualification" Relationship="Inventory_managementModel.FK__tblStaff__Qualif__6BE40491" FromRole="tblStaff" ToRole="tblQualification" />
+          <NavigationProperty Name="tblRole" Relationship="Inventory_managementModel.FK__tblStaff__RoleId__6CD828CA" FromRole="tblStaff" ToRole="tblRole" />
+        </EntityType>
+        <Association Name="FK__tblAdmin__Qualif__662B2B3B">
+          <End Type="Inventory_managementModel.tblQualification" Role="tblQualification" Multiplicity="1" />
+          <End Type="Inventory_managementModel.tblAdmin" Role="tblAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="tblAdmin">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAdmin__RoleId__671F4F74">
+          <End Type="Inventory_managementModel.tblRole" Role="tblRole" Multiplicity="1" />
+          <End Type="Inventory_managementModel.tblAdmin" Role="tblAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblAdmin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblManage__Quali__5F7E2DAC">
+          <End Type="Inventory_managementModel.tblQualification" Role="tblQualification" Multiplicity="1" />
+          <End Type="Inventory_managementModel.tblManager" Role="tblManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="tblManager">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblManage__RoleI__607251E5">
+          <End Type="Inventory_managementModel.tblRole" Role="tblRole" Multiplicity="1" />
+          <End Type="Inventory_managementModel.tblManager" Role="tblManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblManager">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStaff__Qualif__6BE40491">
+          <End Type="Inventory_managementModel.tblQualification" Role="tblQualification" Multiplicity="1" />
+          <End Type="Inventory_managementModel.tblStaff" Role="tblStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="tblStaff">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStaff__RoleId__6CD828CA">
+          <End Type="Inventory_managementModel.tblRole" Role="tblRole" Multiplicity="1" />
+          <End Type="Inventory_managementModel.tblStaff" Role="tblStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblStaff">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -79,6 +501,85 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblLogins">
+            <EntityTypeMapping TypeName="Inventory_managementModel.tblLogin">
+              <MappingFragment StoreEntitySet="tblLogin">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="Inventory_managementModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQualifications">
+            <EntityTypeMapping TypeName="Inventory_managementModel.tblQualification">
+              <MappingFragment StoreEntitySet="tblQualification">
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdmins">
+            <EntityTypeMapping TypeName="Inventory_managementModel.tblAdmin">
+              <MappingFragment StoreEntitySet="tblAdmin">
+                <ScalarProperty Name="AdminDeleted" ColumnName="AdminDeleted" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+                <ScalarProperty Name="AdminGender" ColumnName="AdminGender" />
+                <ScalarProperty Name="AdminDOB" ColumnName="AdminDOB" />
+                <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+                <ScalarProperty Name="AdminMobile" ColumnName="AdminMobile" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblManagers">
+            <EntityTypeMapping TypeName="Inventory_managementModel.tblManager">
+              <MappingFragment StoreEntitySet="tblManager">
+                <ScalarProperty Name="ManDeleted" ColumnName="ManDeleted" />
+                <ScalarProperty Name="ManPassword" ColumnName="ManPassword" />
+                <ScalarProperty Name="ManJoiningDate" ColumnName="ManJoiningDate" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+                <ScalarProperty Name="ManSalary" ColumnName="ManSalary" />
+                <ScalarProperty Name="ManGender" ColumnName="ManGender" />
+                <ScalarProperty Name="ManDOB" ColumnName="ManDOB" />
+                <ScalarProperty Name="ManEmail" ColumnName="ManEmail" />
+                <ScalarProperty Name="ManMobile" ColumnName="ManMobile" />
+                <ScalarProperty Name="ManName" ColumnName="ManName" />
+                <ScalarProperty Name="ManId" ColumnName="ManId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStaffs">
+            <EntityTypeMapping TypeName="Inventory_managementModel.tblStaff">
+              <MappingFragment StoreEntitySet="tblStaff">
+                <ScalarProperty Name="StaffDeleted" ColumnName="StaffDeleted" />
+                <ScalarProperty Name="StaffPassword" ColumnName="StaffPassword" />
+                <ScalarProperty Name="StaffJoiningDate" ColumnName="StaffJoiningDate" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+                <ScalarProperty Name="StaffSalary" ColumnName="StaffSalary" />
+                <ScalarProperty Name="StaffGender" ColumnName="StaffGender" />
+                <ScalarProperty Name="StaffDOB" ColumnName="StaffDOB" />
+                <ScalarProperty Name="StaffEmail" ColumnName="StaffEmail" />
+                <ScalarProperty Name="StaffMobile" ColumnName="StaffMobile" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spManRegiCreate" FunctionName="Inventory_managementModel.Store.spManRegiCreate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

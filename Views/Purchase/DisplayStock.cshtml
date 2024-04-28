@@ -7,36 +7,54 @@
 
 <h4>DisplayStock</h4>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Product Name")
-        </th>
-        <th>
-            @Html.DisplayName("Quantity")
-        </th>
-        <th>
-            @Html.DisplayName("Date")
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table table-responsive tblStock">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Purchase_pro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Purchase_qnty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Purchase_date)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "StockDetails", new { id = item.id }, new { @class = "btn btn-success" })
-            </td>
+            <th>
+                @Html.DisplayName("Product Name")
+            </th>
+            <th>
+                @Html.DisplayName("Quantity")
+            </th>
+            <th>
+                @Html.DisplayName("Date")
+            </th>
+            <th>Action</th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Purchase_pro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Purchase_qnty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Purchase_date)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "StockDetails", new { id = item.id }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+@section scripts{
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.tblStock').DataTable({
+                responsive: true,
+                paging: true,
+                ordering: true,
+                info: true,
+                scroller: true,
+                select: true
+            });
+        });
+    </script>
+}

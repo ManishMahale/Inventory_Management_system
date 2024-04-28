@@ -113,49 +113,51 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\data-table_023c0d0d-2da3-4163-8b24-b94c6569d09d\data-table\dataTables.bootstrap5.min.css" />
+    <Content Include="Content\data-table_023c0d0d-2da3-4163-8b24-b94c6569d09d\data-table\dataTables.bootstrap5.min.js" />
+    <Content Include="Content\data-table_023c0d0d-2da3-4163-8b24-b94c6569d09d\data-table\dataTables.responsive.min.js" />
+    <Content Include="Content\data-table_023c0d0d-2da3-4163-8b24-b94c6569d09d\data-table\jquery.dataTables.min.js" />
+    <Content Include="Content\data-table_023c0d0d-2da3-4163-8b24-b94c6569d09d\data-table\responsive.bootstrap5.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bootstrap5.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bootstrap5.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bulma.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.bulma.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.dataTables.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.dataTables.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bootstrap.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bootstrap5.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bootstrap5.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bulma.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.bulma.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.dataTables.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.dataTables.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.foundation.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.foundation.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.jqueryui.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.min.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.semanticui.js" />
+    <Content Include="Content\DataTables\DataTables-2.0.3\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\DataTables\datatables.css" />
+    <Content Include="Content\DataTables\datatables.js" />
+    <Content Include="Content\DataTables\datatables.min.css" />
+    <Content Include="Content\DataTables\datatables.min.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\themes\base\accordion.css" />
-    <Content Include="Content\themes\base\all.css" />
-    <Content Include="Content\themes\base\autocomplete.css" />
-    <Content Include="Content\themes\base\base.css" />
-    <Content Include="Content\themes\base\button.css" />
-    <Content Include="Content\themes\base\core.css" />
-    <Content Include="Content\themes\base\datepicker.css" />
-    <Content Include="Content\themes\base\dialog.css" />
-    <Content Include="Content\themes\base\draggable.css" />
     <Content Include="Content\themes\base\images\InventoryManagement_Hero%403x.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\jquery-ui.min.css" />
-    <Content Include="Content\themes\base\menu.css" />
-    <Content Include="Content\themes\base\progressbar.css" />
-    <Content Include="Content\themes\base\resizable.css" />
-    <Content Include="Content\themes\base\selectable.css" />
-    <Content Include="Content\themes\base\selectmenu.css" />
-    <Content Include="Content\themes\base\slider.css" />
-    <Content Include="Content\themes\base\sortable.css" />
-    <Content Include="Content\themes\base\spinner.css" />
-    <Content Include="Content\themes\base\tabs.css" />
-    <Content Include="Content\themes\base\theme.css" />
-    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\InventoryModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -179,15 +181,17 @@
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
-    <Content Include="Scripts\jquery-ui-1.13.2.js" />
-    <Content Include="Scripts\jquery-ui-1.13.2.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ManagerRegiController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
+    <Compile Include="Controllers\StaffRegiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,12 +210,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InventoryModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblAdmin.cs">
+      <DependentUpon>InventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLogin.cs">
+      <DependentUpon>InventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblManager.cs">
+      <DependentUpon>InventoryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblPurchase.cs">
+      <DependentUpon>InventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblQualification.cs">
+      <DependentUpon>InventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblRole.cs">
       <DependentUpon>InventoryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSale.cs">
       <DependentUpon>InventoryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblStaff.cs">
+      <DependentUpon>InventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ValidationClasses\ManagerRegiValid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -250,8 +273,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Purchase\Index.cshtml" />
     <Content Include="Views\Purchase\PurchaseProduct.cshtml" />
-    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="Views\Purchase\Edit.cshtml" />
     <Content Include="Views\Purchase\Details.cshtml" />
     <Content Include="Views\Purchase\Delete.cshtml" />
@@ -263,6 +284,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Purchase\DisplayStock.cshtml" />
     <Content Include="Views\Purchase\StockDetails.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Registration\Registration.cshtml" />
+    <Content Include="Views\Shared\_UserNotFound.cshtml" />
+    <Content Include="Views\ManagerRegi\ManRegiCreate.cshtml" />
+    <Content Include="Views\ManagerRegi\DisplayManager.cshtml" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -272,6 +300,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminRegistration\" />
+    <Folder Include="Views\StaffRegi\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

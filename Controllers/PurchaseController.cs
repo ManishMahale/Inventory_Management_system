@@ -49,7 +49,7 @@ namespace Inventory_Management_system.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var prod = db.tblPurchases.Select(x => x.Purchase_pro).ToList(); //to deopdown menu of product
+            var prod = db.tblPurchases.Select(x => x.Purchase_pro).ToList(); //to dropdown menu of product
             ViewBag.ProductName = new SelectList(prod);
 
             if (id == 0)
@@ -69,7 +69,7 @@ namespace Inventory_Management_system.Controllers
         [HttpPost]
         public ActionResult Edit(tblPurchase ps)
         {
-            var prod = db.tblPurchases.Select(x => x.Purchase_pro).ToList(); //to deopdown menu of product
+            var prod = db.tblPurchases.Select(x => x.Purchase_pro).ToList(); //to dropdown menu of product
             ViewBag.ProductName = new SelectList(prod);
 
             //tblPurchase obj = new tblPurchase();

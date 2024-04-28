@@ -12,6 +12,8 @@ namespace Inventory_Management_system.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Inventory_managementEntities : DbContext
     {
@@ -27,5 +29,56 @@ namespace Inventory_Management_system.Models
     
         public virtual DbSet<tblSale> tblSales { get; set; }
         public virtual DbSet<tblPurchase> tblPurchases { get; set; }
+        public virtual DbSet<tblLogin> tblLogins { get; set; }
+        public virtual DbSet<tblRole> tblRoles { get; set; }
+        public virtual DbSet<tblQualification> tblQualifications { get; set; }
+        public virtual DbSet<tblAdmin> tblAdmins { get; set; }
+        public virtual DbSet<tblManager> tblManagers { get; set; }
+        public virtual DbSet<tblStaff> tblStaffs { get; set; }
+    
+        public virtual int spManRegiCreate(string manName, string manMobile, string manEmail, Nullable<System.DateTime> manDOB, string manGender, Nullable<int> manSalary, Nullable<int> qualificationId, Nullable<int> roleId, Nullable<System.DateTime> manJoiningDate, string manPassword)
+        {
+            var manNameParameter = manName != null ?
+                new ObjectParameter("ManName", manName) :
+                new ObjectParameter("ManName", typeof(string));
+    
+            var manMobileParameter = manMobile != null ?
+                new ObjectParameter("ManMobile", manMobile) :
+                new ObjectParameter("ManMobile", typeof(string));
+    
+            var manEmailParameter = manEmail != null ?
+                new ObjectParameter("ManEmail", manEmail) :
+                new ObjectParameter("ManEmail", typeof(string));
+    
+            var manDOBParameter = manDOB.HasValue ?
+                new ObjectParameter("ManDOB", manDOB) :
+                new ObjectParameter("ManDOB", typeof(System.DateTime));
+    
+            var manGenderParameter = manGender != null ?
+                new ObjectParameter("ManGender", manGender) :
+                new ObjectParameter("ManGender", typeof(string));
+    
+            var manSalaryParameter = manSalary.HasValue ?
+                new ObjectParameter("ManSalary", manSalary) :
+                new ObjectParameter("ManSalary", typeof(int));
+    
+            var qualificationIdParameter = qualificationId.HasValue ?
+                new ObjectParameter("QualificationId", qualificationId) :
+                new ObjectParameter("QualificationId", typeof(int));
+    
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            var manJoiningDateParameter = manJoiningDate.HasValue ?
+                new ObjectParameter("ManJoiningDate", manJoiningDate) :
+                new ObjectParameter("ManJoiningDate", typeof(System.DateTime));
+    
+            var manPasswordParameter = manPassword != null ?
+                new ObjectParameter("ManPassword", manPassword) :
+                new ObjectParameter("ManPassword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spManRegiCreate", manNameParameter, manMobileParameter, manEmailParameter, manDOBParameter, manGenderParameter, manSalaryParameter, qualificationIdParameter, roleIdParameter, manJoiningDateParameter, manPasswordParameter);
+        }
     }
 }

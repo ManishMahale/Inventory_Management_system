@@ -94,12 +94,12 @@ namespace Inventory_Management_system.Controllers
         {
             var prod = db.tblPurchases.Select(x => x.Purchase_pro).ToList(); //to dropdown menu of product
             ViewBag.ProductName = new SelectList(prod);
-
+            
 
 
             tblSale obj = db.tblSales.SingleOrDefault(x => x.id == s.id);
             int preSale = int.Parse(obj.Sale_qnty); //previous sale qnty
-
+            
             var name = s.Sale_prod;
 
             var TotalQuantity = db.tblPurchases.Where(x => x.Purchase_pro == name).Select(x => x.Purchase_qnty).FirstOrDefault(); //total stock 

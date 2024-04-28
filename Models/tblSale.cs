@@ -11,15 +11,12 @@ namespace Inventory_Management_system.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tblSale
     {
         public int id { get; set; }
         public string Sale_prod { get; set; }
         public string Sale_qnty { get; set; }
-
-        [DataType(DataType.Date)]
         public System.DateTime Sale_date { get; set; }
     }
 }

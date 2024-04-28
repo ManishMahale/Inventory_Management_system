@@ -12,11 +12,13 @@ namespace Inventory_Management_system.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblPurchase
+    public partial class tblLogin
     {
-        public int id { get; set; }
-        public string Purchase_pro { get; set; }
-        public string Purchase_qnty { get; set; }
-        public System.DateTime Purchase_date { get; set; }
+        public int LoginId { get; set; }
+        public string LoginName { get; set; }
+        public string Password { get; set; }
+        public int RoleId { get; set; }
+    
+        public virtual tblRole tblRole { get; set; }
     }
 }

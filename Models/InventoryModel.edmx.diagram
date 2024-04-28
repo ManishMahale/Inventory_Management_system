@@ -4,10 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6bd7bd41b0ca461d82f29f6dccfc6fc1" Name="Diagram1">
+      <Diagram DiagramId="6bd7bd41b0ca461d82f29f6dccfc6fc1" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="Inventory_managementModel.tblSale" Width="1.5" PointX="0.75" PointY="1.125" />
         <EntityTypeShape EntityType="Inventory_managementModel.tblPurchase" Width="1.5" PointX="3.375" PointY="0.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="Inventory_managementModel.tblLogin" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="Inventory_managementModel.tblRole" Width="1.5" PointX="0.75" PointY="4.125" />
+        <AssociationConnector Association="Inventory_managementModel.FK_tblLogin_tblRole" />
+        <EntityTypeShape EntityType="Inventory_managementModel.tblQualification" Width="1.5" PointX="6.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Inventory_managementModel.tblAdmin" Width="1.5" PointX="8.5" PointY="0.75" />
+        <EntityTypeShape EntityType="Inventory_managementModel.tblManager" Width="1.5" PointX="11.5" PointY="5.5" />
+        <EntityTypeShape EntityType="Inventory_managementModel.tblStaff" Width="1.5" PointX="8.5" PointY="5.5" />
+        <AssociationConnector Association="Inventory_managementModel.FK__tblAdmin__Qualif__662B2B3B" />
+        <AssociationConnector Association="Inventory_managementModel.FK__tblAdmin__RoleId__671F4F74" />
+        <AssociationConnector Association="Inventory_managementModel.FK__tblManage__Quali__5F7E2DAC" />
+        <AssociationConnector Association="Inventory_managementModel.FK__tblManage__RoleI__607251E5" />
+        <AssociationConnector Association="Inventory_managementModel.FK__tblStaff__Qualif__6BE40491" />
+        <AssociationConnector Association="Inventory_managementModel.FK__tblStaff__RoleId__6CD828CA" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
